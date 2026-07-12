@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JSX Launcher</title>
+  <link rel="stylesheet" href="launcher.css" />
+</head>
+<body>
+  <header class="bar">
+    <div class="brand">
+      <span class="brand-mark">&lt;/&gt;</span>
+      <span class="brand-name">JSX Launcher</span>
+    </div>
+    <div class="bar-actions">
+      <span id="file-name" class="file-name"></span>
+      <button id="reload-btn" class="btn ghost" hidden>Reload file</button>
+      <button id="pick-btn" class="btn primary">Open .jsx file</button>
+      <a href="https://account.venmo.com/u/jrbrowndotorg" target="_blank" rel="noopener" class="btn support">Send Support</a>
+    </div>
+  </header>
+
+  <input type="file" id="file-input" accept=".jsx,.js" hidden />
+
+  <main id="stage">
+    <!-- Empty state / drop zone -->
+    <section id="dropzone" class="dropzone">
+      <div class="dz-inner">
+        <div class="dz-glyph">&#8595;</div>
+        <h1>Drop a .jsx file here</h1>
+        <p>or use <strong>Open .jsx file</strong> in the top right.</p>
+        <p class="dz-note">The file is transpiled with Babel and rendered with React 18, entirely on your machine. Nothing is uploaded.</p>
+        <ul class="dz-rules">
+          <li><code>export default</code> a component, or define one top-level component function.</li>
+          <li><code>import ... from "react"</code> is supported (hooks are also available as globals).</li>
+          <li>Imports of other packages aren't bundled and will be flagged.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Render surface -->
+    <iframe id="sandbox-frame" src="sandbox.html" title="JSX render surface" hidden></iframe>
+
+    <!-- Error panel -->
+    <section id="error-panel" class="error-panel" hidden>
+      <h2 id="error-title">Error</h2>
+      <pre id="error-detail"></pre>
+    </section>
+  </main>
+
+  <footer class="license-bar">
+    <a href="https://github.com/jrbrown3/JSX-Launcher?tab=Apache-2.0-1-ov-file" target="_blank" rel="noopener" class="license-link">
+      &copy; 2026 J.R. Brown &middot; JSX Launcher &middot; Licensed under Apache 2.0
+    </a>
+  </footer>
+
+  <script src="launcher.js"></script>
+</body>
+</html>
